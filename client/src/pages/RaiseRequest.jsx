@@ -28,7 +28,7 @@ export default function RaiseRequest() {
     try {
       const token = localStorage.getItem("token");
 
-      await API.post("/requests", data, {
+      await API.post("/api/requests", data, {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -12,7 +12,7 @@ export default function MyRequests() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await API.get("/requests/my", {
+      const res = await API.get("/api/requests/my", {
         headers: {
           Authorization: `Bearer ${token}`
         }

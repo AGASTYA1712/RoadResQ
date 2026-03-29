@@ -17,7 +17,7 @@ export default function AddVehicle() {
     try {
       const token = localStorage.getItem("token");
 
-      await API.post("/vehicles", data, {
+      await API.post("/api/vehicles", data,{
         headers: {
           Authorization: `Bearer ${token}`
         }
