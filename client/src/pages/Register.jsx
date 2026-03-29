@@ -14,7 +14,7 @@ export default function Register() {
 
   const register = async () => {
     try {
-      await API.post("/auth/register", data);
+      await API.post("/api/auth/register", data);
       alert("Registered Successfully");
       navigate("/");
     } catch (error) {

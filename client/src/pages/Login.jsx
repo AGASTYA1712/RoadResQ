@@ -8,7 +8,7 @@ export default function Login() {
 
   const login = async () => {
     try {
-      const res = await API.post("/auth/login", data);
+      const res = await API.post("/api/auth/login", data);
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
