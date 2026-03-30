@@ -2,18 +2,18 @@ const db = require("../config/db");
 
 // CREATE SERVICE REQUEST
 exports.createRequest = (req, res) => {
-  const { vehicle_id, issue_type, description, location_text, latitude, longitude } = req.body;
+  const { vehicle_id, issue_type, description, location, latitude, longitude } = req.body;
   const user_id = req.user.id;
 
   const sql = `
     INSERT INTO service_requests
-    (user_id, vehicle_id, issue_type, description, location_text, latitude, longitude)
+    (user_id, vehicle_id, issue_type, description, location, latitude, longitude)
     VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
   db.query(
     sql,
-    [user_id, vehicle_id, issue_type, description, location_text, latitude, longitude],
+    [user_id, vehicle_id, issue_type, description, location, latitude, longitude],
     (err, result) => {
       if (err) {
         console.log("Create Request Error:", err);
@@ -32,7 +32,7 @@ exports.getMyRequests = (req, res) => {
     FROM service_requests sr
     JOIN vehicles v ON sr.vehicle_id = v.id
     WHERE sr.user_id = ?
-    ORDER BY sr.created_at DESC
+    ORDER BY sr.id DESC
   `;
 
   db.query(sql, [req.user.id], (err, result) => {

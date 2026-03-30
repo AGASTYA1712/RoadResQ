@@ -10,7 +10,7 @@ export default function RaiseRequest() {
     vehicle_id: "",
     issue_type: "",
     description: "",
-    location_text: "",
+    location: "",
     latitude: "",
     longitude: ""
   });
@@ -72,7 +72,7 @@ export default function RaiseRequest() {
         <div className="input-group">
           <input
             placeholder="Location"
-            onChange={(e) => setData({ ...data, location_text: e.target.value })}
+            onChange={(e) => setData({ ...data, location: e.target.value })}
           />
         </div>
 

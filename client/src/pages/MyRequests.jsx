@@ -38,7 +38,7 @@ export default function MyRequests() {
               <span className="badge">{req.issue_type}</span>
 
               <p><strong>Vehicle:</strong> {req.vehicle_number}</p>
-              <p><strong>Location:</strong> {req.location_text}</p>
+              <p><strong>Location:</strong> {req.location}</p>
               <p><strong>Status:</strong> {req.status}</p>
               <p><strong>Date:</strong> {req.created_at}</p>
             </div>
