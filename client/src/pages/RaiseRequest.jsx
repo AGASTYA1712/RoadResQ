@@ -37,8 +37,10 @@ export default function RaiseRequest() {
       alert("Request submitted 🚨");
       navigate("/dashboard");
     } catch (error) {
-      alert("Failed to raise request");
-      console.log(error);
+      console.error("Create request failed:", error.response?.data || error.message);
+      alert(
+        error.response?.data?.message || error.response?.data || error.message || "Failed to raise request"
+      );
     }
   };
 

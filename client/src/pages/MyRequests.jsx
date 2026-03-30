@@ -20,8 +20,10 @@ export default function MyRequests() {
 
       setRequests(res.data);
     } catch (error) {
-      console.log(error);
-      alert("Failed to fetch requests");
+      console.error("Fetch requests failed:", error.response?.data || error.message);
+      alert(
+        error.response?.data?.message || error.response?.data || error.message || "Failed to fetch requests"
+      );
     }
   };
 

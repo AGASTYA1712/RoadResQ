@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
+  const jwtSecret = process.env.JWT_SECRET || "roadresq_secret_key";
 
   if (!authHeader) {
     return res.status(401).json({ message: "No token provided" });
@@ -10,7 +11,7 @@ module.exports = (req, res, next) => {
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, jwtSecret);
     req.user = decoded;
     next();
   } catch (error) {
