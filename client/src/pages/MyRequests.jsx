@@ -21,9 +21,16 @@ export default function MyRequests() {
       setRequests(res.data);
     } catch (error) {
       console.error("Fetch requests failed:", error.response?.data || error.message);
-      alert(
-        error.response?.data?.message || error.response?.data || error.message || "Failed to fetch requests"
-      );
+      const errorBody = error.response?.data;
+      const errorText =
+        typeof errorBody === "string"
+          ? errorBody
+          : errorBody?.message
+          ? errorBody.message
+          : errorBody
+          ? JSON.stringify(errorBody)
+          : error.message || "Failed to fetch requests";
+      alert(errorText);
     }
   };
 

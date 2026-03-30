@@ -38,9 +38,16 @@ export default function RaiseRequest() {
       navigate("/dashboard");
     } catch (error) {
       console.error("Create request failed:", error.response?.data || error.message);
-      alert(
-        error.response?.data?.message || error.response?.data || error.message || "Failed to raise request"
-      );
+      const errorBody = error.response?.data;
+      const errorText =
+        typeof errorBody === "string"
+          ? errorBody
+          : errorBody?.message
+          ? errorBody.message
+          : errorBody
+          ? JSON.stringify(errorBody)
+          : error.message || "Failed to raise request";
+      alert(errorText);
     }
   };
 
